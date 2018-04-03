@@ -28,7 +28,7 @@ const AssistantHelper = createReactClass({
       // rather than have both parent and child subscribe to GuideStore.
       currentGuide: null,
       currentStep: 0,
-      currentOrg: null,
+      currentOrgSlug: null,
     };
   },
 
