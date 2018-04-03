@@ -688,7 +688,7 @@ const Stream = createReactClass({
     }
 
     return (
-      <div className="box awaiting-events">
+      <div className="awaiting-events">
         <div className="wrap">
           <div className="robot">
             <span className="eye" />
@@ -725,8 +725,9 @@ const Stream = createReactClass({
         })
       : t('Sorry, no events match your filters.');
 
+    // TODO(lyn): Extract empty state to a separate component
     return (
-      <div className="box empty-stream">
+      <div className="empty-stream" style={{border: 0}}>
         <span className="icon icon-exclamation" />
         <p>{message}</p>
       </div>
@@ -734,11 +735,7 @@ const Stream = createReactClass({
   },
 
   renderLoading() {
-    return (
-      <div className="box">
-        <LoadingIndicator />
-      </div>
-    );
+    return <LoadingIndicator />;
   },
 
   renderStreamBody() {
