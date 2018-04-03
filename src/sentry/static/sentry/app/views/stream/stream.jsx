@@ -29,6 +29,7 @@ import {logAjaxError} from '../../utils/logging';
 import parseLinkHeader from '../../utils/parseLinkHeader';
 import {t, tn, tct} from '../../locale';
 import {setActiveEnvironment} from '../../actionCreators/environments';
+import {Panel, PanelBody} from '../../components/panels';
 
 const MAX_ITEMS = 25;
 const DEFAULT_SORT = 'date';
@@ -659,7 +660,7 @@ const Stream = createReactClass({
         />
       );
     });
-    return <div className="ref-group-list">{groupNodes}</div>;
+    return <PanelBody className="ref-group-list">{groupNodes}</PanelBody>;
   },
 
   renderAwaitingEvents() {
@@ -788,23 +789,25 @@ const Stream = createReactClass({
             isSearchDisabled={this.state.isSidebarVisible}
             savedSearchList={this.state.savedSearchList}
           />
-
-          <StreamActions
-            orgId={params.orgId}
-            projectId={params.projectId}
-            hasReleases={projectFeatures.has('releases')}
-            latestRelease={this.context.project.latestRelease}
-            query={this.state.query}
-            onSelectStatsPeriod={this.onSelectStatsPeriod}
-            onRealtimeChange={this.onRealtimeChange}
-            realtimeActive={this.state.realtimeActive}
-            statsPeriod={this.state.statsPeriod}
-            groupIds={this.state.groupIds}
-            allResultsVisible={this.allResultsVisible()}
-          />
-
-          {this.renderProcessingIssuesHint()}
-          {this.renderStreamBody()}
+          <Panel>
+            <StreamActions
+              orgId={params.orgId}
+              projectId={params.projectId}
+              hasReleases={projectFeatures.has('releases')}
+              latestRelease={this.context.project.latestRelease}
+              query={this.state.query}
+              onSelectStatsPeriod={this.onSelectStatsPeriod}
+              onRealtimeChange={this.onRealtimeChange}
+              realtimeActive={this.state.realtimeActive}
+              statsPeriod={this.state.statsPeriod}
+              groupIds={this.state.groupIds}
+              allResultsVisible={this.allResultsVisible()}
+            />
+            <PanelBody>
+              {this.renderProcessingIssuesHint()}
+              {this.renderStreamBody()}
+            </PanelBody>
+          </Panel>
           <Pagination pageLinks={this.state.pageLinks} />
         </div>
         <StreamSidebar

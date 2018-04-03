@@ -6,14 +6,15 @@ import jQuery from 'jquery';
 
 import SentryTypes from '../proptypes';
 import ApiMixin from '../mixins/apiMixin';
-import GroupListHeader from '../components/groupListHeader';
+import GroupListHeader from './groupListHeader';
 import GroupStore from '../stores/groupStore';
-import LoadingError from '../components/loadingError';
-import LoadingIndicator from '../components/loadingIndicator';
+import LoadingError from './loadingError';
+import LoadingIndicator from './loadingIndicator';
 import ProjectState from '../mixins/projectState';
-import StreamGroup from '../components/stream/group';
+import StreamGroup from './stream/group';
 import utils from '../utils';
 import {t} from '../locale';
+import {Panel, PanelBody} from './panels';
 
 const GroupList = createReactClass({
   displayName: 'GroupList',
@@ -144,9 +145,9 @@ const GroupList = createReactClass({
     let {orgId, projectId} = this.props;
 
     return (
-      <div className={wrapperClass}>
+      <Panel className={wrapperClass}>
         <GroupListHeader />
-        <ul className="group-list">
+        <PanelBody>
           {this.state.groupIds.map(id => {
             return (
               <StreamGroup
@@ -158,8 +159,8 @@ const GroupList = createReactClass({
               />
             );
           })}
-        </ul>
-      </div>
+        </PanelBody>
+      </Panel>
     );
   },
 });
