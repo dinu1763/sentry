@@ -32,6 +32,7 @@ describe('Helper', function() {
         ],
       },
       currentStep: 1,
+      currentOrg: 'test',
     });
     wrapper
       .find('.assistant-cue')

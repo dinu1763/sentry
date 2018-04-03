@@ -28,7 +28,7 @@ const AssistantHelper = createReactClass({
       // rather than have both parent and child subscribe to GuideStore.
       currentGuide: null,
       currentStep: 0,
-      currentOrgSlug: null,
+      currentOrg: null,
     };
   },
 
@@ -40,7 +40,7 @@ const AssistantHelper = createReactClass({
     let newState = {
       currentGuide: data.currentGuide,
       currentStep: data.currentStep,
-      currentOrgSlug: data.currentOrgSlug,
+      currentOrg: data.currentOrg,
     };
     if (this.state.currentGuide != data.currentGuide) {
       newState.isDrawerOpen = false;
@@ -113,7 +113,7 @@ const AssistantHelper = createReactClass({
               step={currentStep}
               onFinish={closeGuide}
               onDismiss={this.handleDismiss}
-              orgSlug={this.state.currentOrgSlug}
+              orgSlug={this.state.currentOrg.slug}
             />
           )}
 
