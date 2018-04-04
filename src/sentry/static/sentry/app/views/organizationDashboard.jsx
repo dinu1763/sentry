@@ -136,9 +136,8 @@ class Resources extends React.Component {
           <Box width={3 / 10}>
             <ResourceCard
               link={'https://docs.sentry.io/'}
-              imgUrl={'images/code-arguments-tags.svg'}
+              imgUrl={'images/code-arguments-tags-mirrored.svg'}
               title={'Docs'}
-              flipImage={true}
             />
           </Box>
         </Flex>
